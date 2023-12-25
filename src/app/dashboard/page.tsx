@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 async function getDogList() {
   const res = await fetch(`${process.env.API_URL}/dogs`);
 
@@ -17,7 +19,9 @@ export default async function Page() {
       <ul>
         {dogList.map((dog) => {
           return (
-            <li key={dog.id}>{dog.name}</li>
+            <li key={dog.id}>
+              <Link href={`/dashboard/${dog.id}`}>{dog.name}</Link>
+            </li>
           )
         })}
       </ul>
